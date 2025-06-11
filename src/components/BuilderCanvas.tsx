@@ -17,7 +17,7 @@ export const BuilderCanvas: React.FC<BuilderCanvasProps> = ({
 }) => {
   // The useDrop hook sets up drop handling for elements with type "BLOCK"
   const [{ isOver }, dropRef] = useDrop(() => ({
-    accept: ["SECTION", "PARAGRAPH", "HEADING", "DIV"],
+    accept: Object.values(BLOCK_TYPES).map(obj => obj.type),
     drop: (item: { type: string }) => {
       // Retrieve the block configuration from your BLOCK_TYPES mapping.
       const blockConfig = BLOCK_TYPES[item.type];
@@ -57,7 +57,7 @@ export const BuilderCanvas: React.FC<BuilderCanvasProps> = ({
     <div
       ref={dropRef}
       style={{
-        minHeight: "500px",
+        height: "100%",
         border: "2px dashed #ddd",
         padding: "20px",
         background: isOver ? "#f9f9f9" : "#fff",

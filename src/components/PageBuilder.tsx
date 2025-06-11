@@ -22,11 +22,11 @@ const PageBuilder: React.FC = () => {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ width: '100%' }}>
+    <div style={{ width: "100%", height: "100vh",display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ width: '100%', height: "100%" }}>
         <BuilderCanvas blocks={blocks} setBlocks={setBlocks} onBlockClick={handleBlockClick} />
       </div>
-      <div style={{ width: "300px", borderLeft: "1px solid #ddd", padding: "8px" }}>
+      <div style={{ width: "200px", borderLeft: "1px solid #ddd", padding: "8px" }}>
         {selectedBlock ? (
           <StylePanel block={selectedBlock} updateBlockStyle={updateBlockStyle} />
         ) : (

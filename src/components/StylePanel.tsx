@@ -29,7 +29,7 @@ const StylePanel: React.FC<StylePanelProps> = ({ block, updateBlockStyle }) => {
   };
 
   return (
-    <div style={{ padding: "16px", border: "1px solid #ddd" }}>
+    <div style={{ padding: "4px", border: "1px solid #ddd" }}>
       <h3>Style Panel for {block.type}</h3>
       <div>
         <label>
