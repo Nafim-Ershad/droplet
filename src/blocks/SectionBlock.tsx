@@ -1,12 +1,14 @@
+// SectionBlock.tsx
 import React from "react";
-import { BlockComponentProps } from "../utils/types";
+import type { BlockComponentProps } from "../types";
+import { uniqueClass } from "../utils";
 
 const SectionBlock: React.FC<BlockComponentProps> = ({ style, className, data }) => {
-    return(
-        <section className={className} style={style}>
-            { data ? "Section Content" : "Section"}
-        </section>
-    )
-}
+  return (
+    <section style={style} className={className ? className : uniqueClass()}>
+      {data ? "Section Content" : "Section"}
+    </section>
+  );
+};
 
 export default SectionBlock;

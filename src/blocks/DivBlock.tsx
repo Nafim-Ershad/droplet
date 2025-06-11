@@ -1,12 +1,14 @@
+// DivBlock.tsx
 import React from "react";
-import { BlockComponentProps } from "../utils/types";
+import type { BlockComponentProps } from "../types";
+import { uniqueClass } from "../utils";
 
 const DivBlock: React.FC<BlockComponentProps> = ({ style, className, data }) => {
-    return(
-        <div className={className} style={style}>
-            { data ? "Div Content" : "Div"}
-        </div>
-    )
-}
+  return (
+    <div style={style} className={className ? className : uniqueClass()}>
+      {data ? "Div Content" : "Div"}
+    </div>
+  );
+};
 
 export default DivBlock;

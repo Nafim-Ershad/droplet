@@ -1,12 +1,19 @@
+// DefaultBlock.tsx
 import React from "react";
-import { BlockComponentProps } from "../utils/types";
+import { uniqueClass } from "../utils";
 
-const DefaultBlock: React.FC<BlockComponentProps> = ({ style, className, data }) => {
-    return(
-        <div className={className} style={style}>
-            { data ? "Default Content" : "Default"}
-        </div>
-    )
+interface DefaultBlockProps {
+  style: React.CSSProperties;
+  className: string;
+  children?: React.ReactNode
 }
+
+const DefaultBlock: React.FC<DefaultBlockProps> = ({ style, className, children }) => {
+  return (
+    <div style={style} className={className ? className : uniqueClass()}>
+      {children || "Default Content"}
+    </div>
+  );
+};
 
 export default DefaultBlock;
