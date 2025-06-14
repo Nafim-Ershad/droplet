@@ -1,8 +1,8 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import { BLOCK_TYPES } from "../blocksConfig";
-import DefaultBlock from "../blocks/DefaultBlock";
 import type { Block } from "../types";
+import RenderBlock from "./RenderBlock";
 
 interface BuilderCanvasProps {
   blocks: Block[];
@@ -36,21 +36,6 @@ export const BuilderCanvas: React.FC<BuilderCanvasProps> = ({
     }),
   }), [setBlocks]);
 
-  // Render each block and attach an onClick event to allow editing
-  const RenderBlock: React.FC<{ block: Block }> = ({ block }) => {
-    const blockConfig = BLOCK_TYPES[block.type];
-    const BlockComponent = blockConfig ? blockConfig.component : DefaultBlock;
-    return (
-      <div onClick={() => onBlockClick(block)}>
-        <BlockComponent
-          style={block.styles}
-          className={block.className}
-          data={block}
-        />
-      </div>
-    );
-  };
-
   return (
     // Attach the dropRef to this div. Even though you don’t see onDrop here,
     // the drop behavior is enabled by the ref provided by useDrop.
@@ -64,7 +49,7 @@ export const BuilderCanvas: React.FC<BuilderCanvasProps> = ({
       }}
     >
       {blocks.map((block) => (
-        <RenderBlock key={block.id} block={block} />
+        <RenderBlock key={block.id} block={block} blockClick={onBlockClick} />
       ))}
     </div>
   );

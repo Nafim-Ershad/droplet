@@ -6,6 +6,7 @@ export interface Block {
   type: string;
   styles: React.CSSProperties;
   className: string;
+  children?: Block[]; // Allow nested elements
 }
 
 // Props to pass to each block component
